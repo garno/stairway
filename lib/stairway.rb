@@ -1,5 +1,10 @@
+require 'observer'
+
+require "stairway/stairs"
+require "stairway/step"
+require "stairway/stop"
+
 require "stairway/version"
-require_relative "stairway/stairs.rb"
 
 module Stairway
 
@@ -11,6 +16,10 @@ module Stairway
 
   def self.mount(stairs_name)
     @@stairs[stairs_name]
+  end
+
+  def self.stop
+    raise Stop
   end
 
 end
