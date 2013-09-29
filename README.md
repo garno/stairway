@@ -38,15 +38,15 @@ Stairway.mount(:import).run
 
 ## Define your steps
 
-In the above section, you can see a `DownloadContent` class being intanciated. All your step should at least, respond to the `run` method. This method will be automatically called.
+In the above section, you can see a `ImportSchedule::Download` class being intanciated. All your step should at least, respond to the `run` method. This method will be automatically called.
 
 ```
-class DownloadContent < Stairway::Step
-
-	def run
-		…do stuff here…		
-	end
-
+module ImportSchedule
+  class Download < Stairway::Step
+    def run
+      …do stuff here…		
+    end
+  emd
 end
 ```
 
@@ -55,16 +55,16 @@ end
 At any time, if you want to stop the processing for whatever reason, you can do this:
 
 ```
-class DownloadContent
-
-  def run(context, options)
-    begin
-      …download your content…
-    rescue DownloadError	
-      Stairway.stop
+module ImportSchedule
+  class Download < Stairway::Step
+    def run
+      begin
+        …download your content…
+      rescue DownloadError	
+        Stairway.stop
+      end
     end
   end
-
 end
 ```
 
