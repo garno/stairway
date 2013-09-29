@@ -35,6 +35,12 @@ module Stairway
       end
     end
 
+    def run_step(name, context={}, options={})
+      notify(context, options)
+
+      @steps[name].run
+    end
+
   protected
 
     def notify(context, options)
