@@ -18,7 +18,7 @@ First, create a new *initializer* to define the different steps of your Stairway
 ```
 # config/initializers/stairways.rb
 
-import = Stairway.new(:import)
+import = Stairway::Stairs.new(:import)
 import.steps = {
   download:    ImportSchedule::Download.new,
   unzip:       ImportSchedule::Unzip.new,
