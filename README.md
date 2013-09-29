@@ -73,3 +73,7 @@ Sometime, I guess, you'll want to run a single step.
 ```
 Stairway.mount(:import).run_step(:download, context, options)
 ```
+
+## License
+
+Stairway is © 2013-2014 [Samuel Garneau](http://twitter.com/garno) and may be freely distributed under the [MIT license](https://github.com/garno/stairway/blob/master/LICENSE). See the `LICENSE` file.
