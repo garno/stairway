@@ -22,17 +22,24 @@ module Stairway
       end
     end
 
-    def run(options={})
+    def run(context={}, options={})
+      notify(context, options)
+
       @steps.each do |name, klass|
         begin
           klass.run
-
-          changed
-          notify_observers(klass.context, klass.options)
+          notify(klass.context, klass.options)
         rescue Stairway::Stop
           exit
         end
       end
+    end
+
+  protected
+
+    def notify(context, options)
+      changed
+      notify_observers(context, options)
     end
 
   end
