@@ -1,8 +1,6 @@
 # Stairway
 Easy and intuitive step by step processing of your business logic.
 
----
-
 ## Installation
 
 Add this line to your application's Gemfile:
