@@ -33,7 +33,7 @@ Stairway.register(import)
 Now, you can run the logic from anywhere in your application using:
 
 ```
-Stairway.mount(:import).run(options)
+Stairway.mount(:import).run
 ```
 
 ## Define your steps
@@ -41,9 +41,9 @@ Stairway.mount(:import).run(options)
 In the above section, you can see a `DownloadContent` class being intanciated. All your step should at least, respond to the `run` method. This method will be automatically called.
 
 ```
-class DownloadContent
+class DownloadContent < Stairway::Step
 
-	def run(context, options)
+	def run
 		…do stuff here…		
 	end
 
