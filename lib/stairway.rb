@@ -1,5 +1,3 @@
-require 'observer'
-
 require "stairway/stairs"
 require "stairway/step"
 require "stairway/stop"
@@ -10,8 +8,10 @@ module Stairway
 
   @@stairs = {}
 
-  def self.register(stairs)
-    @@stairs.merge! stairs.name.to_sym => stairs
+  def self.register(*stairs)
+    stairs.each do |s|
+      @@stairs.merge! s.name.to_sym => s
+    end
   end
 
   def self.mount(stairs_name)
