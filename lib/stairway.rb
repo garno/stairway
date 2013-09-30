@@ -1,8 +1,10 @@
 require "stairway/stairs"
 require "stairway/step"
-require "stairway/stop"
-
 require "stairway/version"
+
+# Exceptions
+require "stairway/exceptions/unregistered_stairs"
+require "stairway/exceptions/stop"
 
 module Stairway
 
@@ -15,6 +17,8 @@ module Stairway
   end
 
   def self.mount(stairs_name)
+    raise UnregisteredStairs unless @@stairs.include?(stairs_name)
+
     @@stairs[stairs_name]
   end
 
