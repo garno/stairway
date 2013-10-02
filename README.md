@@ -43,6 +43,11 @@ module ImportSchedule
   class Download < Stairway::Step
     def run
       …do stuff here…		
+
+      context[:file_path] = '/tmp/boom.zip'
+
+      # `context` is available in all the steps
+      # and can be modified.
     end
   emd
 end
