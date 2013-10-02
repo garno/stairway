@@ -1,5 +1,5 @@
 # Stairway
-Easy and intuitive step by step processing of your business logic.
+Easy step by step processing of your business logic.
 
 ## Installation
 
