@@ -3,8 +3,9 @@ require "stairway/step"
 require "stairway/version"
 
 # Exceptions
-require "stairway/exceptions/unregistered_stairs"
 require "stairway/exceptions/stop"
+require "stairway/exceptions/unregistered_stairs"
+require "stairway/exceptions/invalid_stairs_object"
 
 module Stairway
 
@@ -12,8 +13,14 @@ module Stairway
 
   def self.register(*stairs)
     stairs.each do |s|
-      @@stairs.merge! s.name.to_sym => s
+      if valid_stairs?(s)
+        @@stairs.merge! s.name.to_sym => s
+      else
+        raise InvalidStairsObject
+      end
     end
+
+    true
   end
 
   def self.mount(stairs_name)
@@ -24,6 +31,12 @@ module Stairway
 
   def self.stop
     raise Stop
+  end
+
+protected
+
+  def self.valid_stairs?(stairs)
+    stairs.respond_to?(:name)
   end
 
 end
