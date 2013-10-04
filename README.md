@@ -5,7 +5,7 @@ Easy step by step processing of your business logic.
 
 Add this line to your application's Gemfile:
 
-```
+```ruby
 gem 'stairway'
 ```
 
@@ -13,7 +13,7 @@ gem 'stairway'
 
 First, create a new *initializer* to define the different steps of your Stairway:
 
-```
+```ruby
 # config/initializers/stairways.rb
 
 import = Stairway::Stairs.new(:import)
@@ -30,7 +30,7 @@ Stairway.register(import)
 
 Now, you can run the logic from anywhere in your application using:
 
-```
+```ruby
 Stairway.mount(:import).run
 ```
 
@@ -38,11 +38,11 @@ Stairway.mount(:import).run
 
 In the above section, you can see a `ImportSchedule::Download` class being intanciated. All your step should at least, respond to the `run` method. This method will be automatically called.
 
-```
+```ruby
 module ImportSchedule
   class Download < Stairway::Step
     def run
-      …do stuff here…		
+      # do stuff here…
 
       context[:file_path] = '/tmp/boom.zip'
 
@@ -57,13 +57,13 @@ end
 
 At any time, if you want to stop the processing for whatever reason, you can do this:
 
-```
+```ruby
 module ImportSchedule
   class Download < Stairway::Step
     def run
       begin
-        …download your content…
-      rescue DownloadError	
+        # download your content…
+      rescue DownloadError
         Stairway.stop
       end
     end
@@ -75,7 +75,7 @@ end
 
 Sometime, I guess, you'll want to run a single step.
 
-```
+```ruby
 Stairway.mount(:import).run_step(:download, context, options)
 ```
 
